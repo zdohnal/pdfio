@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<analysis>
+    <metadata>
+        <generator name="fedora-review" version="0.11.0" build="05c5b26 2025-11-29 22:53:53 +0000"/>
+        <file given-path="pdfio.spec">
+            <hash alg="sha224" hexdigest="749b7cf951f6bcfe54cae674e7640f49d67f1bf4ccf9f706f2771302"/>
+        </file>
+        <sut>
+            <source-rpm name="pdfio" version="1.6.0" release="1.fc44"/>
+        </sut>
+    </metadata>
+    <results>
+        <issue test-id="generic-large-docs" severity="MUST">
+            <message>Large documentation must go in a -doc subpackage. Large could be size (~1MB) or number of files.</message>
+            <location>
+                <file given-path="pdfio.spec"/>
+            </location>
+            <notes>Documentation size is 1721169 bytes in 18 files. </notes>
+        </issue>
+    </results>
+</analysis>

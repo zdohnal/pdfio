@@ -3,7 +3,7 @@ Version: 1.6.0
 Release: 1%{?dist}
 Summary: C library for PDF I/O
 # the same license as CUPS
-License: Apache-2.0 WITH LLVM-exception AND Zlib
+License: Apache-2.0 WITH LLVM-exception
 URL: https://msweet.org/pdfio
 Source0: https://github.com/michaelrsweet/pdfio/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
