@@ -1,9 +1,9 @@
 Name: pdfio
-Version: 1.6.0
+Version: 1.6.1
 Release: 1%{?dist}
 Summary: C library for PDF I/O
 # the same license as CUPS
-License: Apache-2.0 WITH LLVM-exception
+License: Apache-2.0 WITH LLVM-exception AND Zlib AND GPL-2.0-or-later AND OFL-1.1
 URL: https://msweet.org/pdfio
 Source0: https://github.com/michaelrsweet/pdfio/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
@@ -31,14 +31,25 @@ and streams withing PDF file, working with PDF metadata etc.
 
 %package devel
 # Apache 2.0 with exception - pdfio code
-# GPL-2.0-or-later - code128 code from examples
-# OFL-1.1 - SIL Open Font License for Roboto fonts in examples
-License: Apache-2.0 WITH LLVM-exception AND GPL-2.0-or-later AND OFL-1.1
 Summary: PDFIO development files
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description devel
 The package contains development files for PDFIO library.
+
+%package examples
+# GPL-2.0-or-later - code128 font from examples
+# OFL-1.1 - SIL Open Font License for Roboto fonts in examples
+# Apache 2.0 with exception - pdfio example code
+Summary: PDFIO examples
+# contains only source code and fonts for examples
+BuildArch: noarch
+# examples require PDFIO development headers if user wants to compile them
+Requires: %{name}-devel = %{version}-%{release}
+
+%description examples
+The package contains several examples of source files to illustrate working
+with PDFIO library.
 
 
 %prep
@@ -57,8 +68,17 @@ The package contains development files for PDFIO library.
 %install
 make install
 
+# remove duplicated license
 rm %{buildroot}/%{_pkgdocdir}/{LICENSE,NOTICE}
-mv %{buildroot}%{_pkgdocdir}/examples/*LICENSE* .
+# copy the font licenses into correct license dir and remove the files
+# in the old location
+cp -p %{buildroot}%{_pkgdocdir}/examples/*LICENSE* .
+rm %{buildroot}%{_pkgdocdir}/examples/*LICENSE*
+
+# move examples out of documentation
+mkdir %{buildroot}%{_datadir}/%{name}
+cp -pr %{buildroot}%{_pkgdocdir}/examples %{buildroot}%{_datadir}/%{name}
+rm -rf %{buildroot}%{_pkgdocdir}/examples
 
 
 %check
@@ -71,21 +91,23 @@ make test
 %{_libdir}/libpdfio.so.1
 
 %files devel
-%license code128-LICENSE.txt Roboto-LICENSE.txt
 %{_includedir}/pdfio.h
 %{_includedir}/pdfio-content.h
 %{_libdir}/libpdfio.so
 %{_libdir}/pkgconfig/pdfio.pc
 %{_mandir}/man3/pdfio.3.gz
-%dir %{_pkgdocdir}
 %{_pkgdocdir}/pdfio.html
 %{_pkgdocdir}/pdfio-512.png
-%dir %{_pkgdocdir}/examples
+
+%files examples
+%license code128-LICENSE.txt Roboto-LICENSE.txt
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/examples
 # TrueType fonts, C source files, docs
 # for examples
-%{_pkgdocdir}/examples/*
+%{_datadir}/%{name}/examples/*
 
 
 %changelog
-* Wed Dec 17 2025 Zdenek Dohnal <zdohnal@redhat.com> - 1.6.0-1
+* Tue Jan 06 2026 Zdenek Dohnal <zdohnal@redhat.com> - 1.6.1-1
 - Initial import

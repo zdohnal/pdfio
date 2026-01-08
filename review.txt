@@ -35,7 +35,7 @@ Issues:
 ===== MUST items =====
 
 C/C++:
-[ ]: Package does not contain kernel modules.
+[-]: Package does not contain kernel modules.
 [x]: If your application is a C or C++ application you must list a
      BuildRequires against gcc, gcc-c++ or clang.
 [x]: ldconfig not called in %post and %postun for Fedora 28 and later.
@@ -45,10 +45,10 @@ C/C++:
 [x]: Development (unversioned) .so files in -devel subpackage, if present.
 
 Generic:
-[ ]: Package is licensed with an open-source compatible license and meets
+[x]: Package is licensed with an open-source compatible license and meets
      other legal requirements as defined in the legal section of Packaging
      Guidelines.
-[ ]: License field in the package spec file matches the actual license.
+[x]: License field in the package spec file matches the actual license.
      Note: Checking patched sources after %prep for licenses. Licenses
      found: "Unknown or generated", "*No copyright* Apache License 2.0",
      "Apache License 2.0", "GNU General Public License, Version 2", "GNU
@@ -59,33 +59,33 @@ Generic:
      copyright* SIL Open Font License 1.1". 128 files have unknown license.
      Detailed output of licensecheck in
      /home/zdohnal/repo_upstream/pdfio/pdfio/licensecheck.txt
-[ ]: License file installed when any subpackage combination is installed.
-[ ]: If the package is under multiple licenses, the licensing breakdown
+[x]: License file installed when any subpackage combination is installed.
+[x]: If the package is under multiple licenses, the licensing breakdown
      must be documented in the spec.
-[ ]: %build honors applicable compiler flags or justifies otherwise.
-[ ]: Package contains no bundled libraries or specifies bundled libraries
+[x]: %build honors applicable compiler flags or justifies otherwise.
+[x]: Package contains no bundled libraries or specifies bundled libraries
      with Provides: bundled(<libname>) if unbundling is not possible.
-[ ]: Changelog in prescribed format.
-[ ]: Sources contain only permissible code or content.
-[ ]: Package contains desktop file if it is a GUI application.
-[ ]: Development files must be in a -devel package
-[ ]: Package uses nothing in %doc for runtime.
-[ ]: Package consistently uses macros (instead of hard-coded directory
+[x]: Changelog in prescribed format.
+[x]: Sources contain only permissible code or content.
+[-]: Package contains desktop file if it is a GUI application.
+[x]: Development files must be in a -devel package
+[x]: Package uses nothing in %doc for runtime.
+[x]: Package consistently uses macros (instead of hard-coded directory
      names).
-[ ]: Package is named according to the Package Naming Guidelines.
-[ ]: Package does not generate any conflict.
-[ ]: Package obeys FHS, except libexecdir and /usr/target.
-[ ]: If the package is a rename of another package, proper Obsoletes and
+[x]: Package is named according to the Package Naming Guidelines.
+[x]: Package does not generate any conflict.
+[x]: Package obeys FHS, except libexecdir and /usr/target.
+[-]: If the package is a rename of another package, proper Obsoletes and
      Provides are present.
-[ ]: Requires correct, justified where necessary.
-[ ]: Spec file is legible and written in American English.
-[ ]: Package contains systemd file(s) if in need.
-[ ]: Useful -debuginfo package or justification otherwise.
-[ ]: Package is not known to require an ExcludeArch tag.
-[ ]: Large documentation must go in a -doc subpackage. Large could be size
+[x]: Requires correct, justified where necessary.
+[x]: Spec file is legible and written in American English.
+[-]: Package contains systemd file(s) if in need.
+[x]: Useful -debuginfo package or justification otherwise.
+[x]: Package is not known to require an ExcludeArch tag.
+[x]: Large documentation must go in a -doc subpackage. Large could be size
      (~1MB) or number of files.
      Note: Documentation size is 351844 bytes in 4 files.
-[ ]: Package complies to the Packaging Guidelines
+[x]: Package complies to the Packaging Guidelines
 [x]: Package successfully compiles and builds into binary rpms on at least
      one supported primary architecture.
 [x]: Package installs properly.
@@ -121,24 +121,24 @@ Generic:
 ===== SHOULD items =====
 
 Generic:
-[ ]: Avoid bundling fonts in non-fonts packages.
+[!]: Avoid bundling fonts in non-fonts packages.
      Note: Package contains font files
-[ ]: If the source package does not include license text(s) as a separate
+[x]: If the source package does not include license text(s) as a separate
      file from upstream, the packager SHOULD query upstream to include it.
-[ ]: Final provides and requires are sane (see attachments).
-[ ]: Fully versioned dependency in subpackages if applicable.
+[x]: Final provides and requires are sane (see attachments).
+[x]: Fully versioned dependency in subpackages if applicable.
      Note: No Requires: %{name}%{?_isa} = %{version}-%{release} in pdfio-
      examples
-[ ]: Package functions as described.
-[ ]: Latest version is packaged.
-[ ]: Package does not include license text files separate from upstream.
-[ ]: Sources are verified with gpgverify first in %prep if upstream
+[x]: Package functions as described.
+[x]: Latest version is packaged.
+[x]: Package does not include license text files separate from upstream.
+[-]: Sources are verified with gpgverify first in %prep if upstream
      publishes signatures.
      Note: gpgverify is not used.
-[ ]: Package should compile and build into binary rpms on all supported
+[x]: Package should compile and build into binary rpms on all supported
      architectures.
-[ ]: %check is present and all tests pass.
-[ ]: Packages should try to preserve timestamps of original installed
+[x]: %check is present and all tests pass.
+[x]: Packages should try to preserve timestamps of original installed
      files.
 [x]: Reviewer should test that the package builds in mock.
 [x]: Buildroot is not present
@@ -154,19 +154,20 @@ Generic:
 ===== EXTRA items =====
 
 Generic:
+[x]: Large data in /usr/share should live in a noarch subpackage if package
+     is arched.
+     Note: Arch-ed rpms have a total of 1832960 bytes in /usr/share
 [x]: Rpmlint is run on debuginfo package(s).
      Note: No rpmlint messages.
 [x]: Rpmlint is run on all installed packages.
      Note: There are rpmlint messages (see attachment).
-[x]: Large data in /usr/share should live in a noarch subpackage if package
-     is arched.
 
 
 Rpmlint
 -------
 Checking: pdfio-1.6.1-1.fc44.x86_64.rpm
           pdfio-devel-1.6.1-1.fc44.x86_64.rpm
-          pdfio-examples-1.6.1-1.fc44.noarch.rpm
+          pdfio-examples-1.6.1-1.fc44.x86_64.rpm
           pdfio-1.6.1-1.fc44.src.rpm
 ============================ rpmlint session starts ============================
 rpmlint: 2.8.0
@@ -177,19 +178,19 @@ configuration:
     /etc/xdg/rpmlint/scoring.toml
     /etc/xdg/rpmlint/users-groups.toml
     /etc/xdg/rpmlint/warn-on-functions.toml
-rpmlintrc: [PosixPath('/tmp/tmp7bi_zzz_')]
+rpmlintrc: [PosixPath('/tmp/tmp5wl2pr6j')]
 checks: 32, packages: 4
 
-pdfio-examples.noarch: W: no-documentation
-pdfio-examples.noarch: E: incorrect-fsf-address /usr/share/licenses/pdfio-examples/code128-LICENSE.txt
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/code128.c
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/image2pdf.c
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/md2pdf.c
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/mmd.c
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/mmd.h
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/pdf2text.c
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/pdfioinfo.c
-pdfio-examples.noarch: E: devel-dependency pdfio-devel
+pdfio-examples.x86_64: W: no-documentation
+pdfio-examples.x86_64: E: no-binary
+pdfio-examples.x86_64: E: incorrect-fsf-address /usr/share/licenses/pdfio-examples/code128-LICENSE.txt
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/code128.c
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/image2pdf.c
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/md2pdf.c
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/mmd.c
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/mmd.h
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/pdf2text.c
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/pdfioinfo.c
  4 packages and 0 specfiles checked; 2 errors, 8 warnings, 26 filtered, 2 badness; has taken 0.3 s 
 
 
@@ -207,7 +208,7 @@ configuration:
     /etc/xdg/rpmlint/scoring.toml
     /etc/xdg/rpmlint/users-groups.toml
     /etc/xdg/rpmlint/warn-on-functions.toml
-rpmlintrc: [PosixPath('/tmp/tmprdihaqox')]
+rpmlintrc: [PosixPath('/tmp/tmpxh_vlsnr')]
 checks: 32, packages: 1
 
  1 packages and 0 specfiles checked; 0 errors, 0 warnings, 5 filtered, 0 badness; has taken 0.1 s 
@@ -229,17 +230,17 @@ configuration:
     /etc/xdg/rpmlint/warn-on-functions.toml
 checks: 32, packages: 4
 
-pdfio-examples.noarch: W: no-documentation
-pdfio-examples.noarch: E: incorrect-fsf-address /usr/share/licenses/pdfio-examples/code128-LICENSE.txt
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/code128.c
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/image2pdf.c
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/md2pdf.c
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/mmd.c
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/mmd.h
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/pdf2text.c
-pdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/pdfioinfo.c
-pdfio-examples.noarch: E: devel-dependency pdfio-devel
- 4 packages and 0 specfiles checked; 2 errors, 8 warnings, 28 filtered, 2 badness; has taken 0.2 s 
+pdfio-examples.x86_64: W: no-documentation
+pdfio-examples.x86_64: E: no-binary
+pdfio-examples.x86_64: E: incorrect-fsf-address /usr/share/licenses/pdfio-examples/code128-LICENSE.txt
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/code128.c
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/image2pdf.c
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/md2pdf.c
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/mmd.c
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/mmd.h
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/pdf2text.c
+pdfio-examples.x86_64: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/pdfioinfo.c
+ 4 packages and 0 specfiles checked; 2 errors, 8 warnings, 28 filtered, 2 badness; has taken 0.3 s 
 
 
 
@@ -268,7 +269,7 @@ pdfio-devel (rpmlib, GLIBC filtered):
     pkgconfig(zlib)
 
 pdfio-examples (rpmlib, GLIBC filtered):
-    pdfio-devel
+    pdfio-devel(x86-64)
 
 
 
@@ -286,12 +287,13 @@ pdfio-devel:
 
 pdfio-examples:
     pdfio-examples
+    pdfio-examples(x86-64)
 
 
 
 Generated by fedora-review 0.11.0 (05c5b26) last change: 2025-11-29
 Command line :/usr/bin/fedora-review -rn pdfio-1.6.1-1.fc44.src.rpm
 Buildroot used: fedora-rawhide-x86_64
-Active plugins: Generic, Shell-api, C/C++
-Disabled plugins: Perl, Ocaml, fonts, R, PHP, Python, SugarActivity, Haskell, Java
+Active plugins: Generic, C/C++, Shell-api
+Disabled plugins: Ocaml, Haskell, Perl, Java, SugarActivity, R, PHP, fonts, Python
 Disabled flags: EXARCH, EPEL6, EPEL7, DISTTAG, BATCH

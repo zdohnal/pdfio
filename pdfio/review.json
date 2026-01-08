@@ -2,10 +2,10 @@
   "issues": [
     {
       "result": "fail",
-      "text": "Large documentation must go in a -doc subpackage. Large could be size (~1MB) or number of files.",
-      "note": "Documentation size is 1721169 bytes in 18 files. ",
-      "name": "generic-large-docs",
-      "url": "https://docs.fedoraproject.org/en-US/packaging-guidelines/#_documentation"
+      "text": "Header files in -devel subpackage, if present.",
+      "note": "pdfio-examples : /usr/share/pdfio/examples/mmd.h ",
+      "name": "CheckHeaderFiles",
+      "url": "https://docs.fedoraproject.org/en-US/packaging-guidelines/#_devel_packages"
     }
   ],
   "results": {
@@ -19,9 +19,9 @@
           "url": "https://docs.fedoraproject.org/en-US/packaging-guidelines/C_and_C++/"
         },
         {
-          "result": "pass",
+          "result": "fail",
           "text": "Header files in -devel subpackage, if present.",
-          "note": "",
+          "note": "pdfio-examples : /usr/share/pdfio/examples/mmd.h ",
           "name": "CheckHeaderFiles",
           "url": "https://docs.fedoraproject.org/en-US/packaging-guidelines/#_devel_packages"
         },
@@ -231,6 +231,13 @@
           "url": "https://docs.fedoraproject.org/en-US/packaging-guidelines/#_why_the_makeinstall_macro_should_not_be_used"
         },
         {
+          "result": "pending",
+          "text": "If the package is under multiple licenses, the licensing breakdown must be documented in the spec.",
+          "note": null,
+          "name": "CheckMultipleLicenses",
+          "url": "https://docs.fedoraproject.org/en-US/packaging-guidelines/LicensingGuidelines/#_multiple_licensing_scenarios"
+        },
+        {
           "result": "pass",
           "text": "Package is named using only allowed ASCII characters.",
           "note": null,
@@ -350,9 +357,9 @@
           "url": "https://fedoraproject.org/wiki/Architectures#ExcludeArch_.26_ExclusiveArch"
         },
         {
-          "result": "fail",
+          "result": "pending",
           "text": "Large documentation must go in a -doc subpackage. Large could be size (~1MB) or number of files.",
-          "note": "Documentation size is 1721169 bytes in 18 files. ",
+          "note": "Documentation size is 351844 bytes in 4 files. ",
           "name": "generic-large-docs",
           "url": "https://docs.fedoraproject.org/en-US/packaging-guidelines/#_documentation"
         },
@@ -438,9 +445,9 @@
           "url": "https://docs.fedoraproject.org/en-US/packaging-guidelines/"
         },
         {
-          "result": "pass",
+          "result": "pending",
           "text": "Fully versioned dependency in subpackages if applicable.",
-          "note": null,
+          "note": "No Requires: %{name}%{?_isa} = %{version}-%{release} in pdfio-examples",
           "name": "CheckFullVerReqSub",
           "url": "https://docs.fedoraproject.org/en-US/packaging-guidelines/#_requiring_base_package"
         },
@@ -533,9 +540,9 @@
     "EXTRA": {
       "Generic": [
         {
-          "result": "pending",
+          "result": "pass",
           "text": "Large data in /usr/share should live in a noarch subpackage if package is arched.",
-          "note": "Arch-ed rpms have a total of 1822720 bytes in /usr/share ",
+          "note": null,
           "name": "generic-large-data",
           "url": "https://fedoraproject.org/wiki/Packaging:ReviewGuidelines#Package_Review_Guidelines"
         },
@@ -559,31 +566,31 @@
   "attachments": [
     {
       "header": "Rpmlint",
-      "text": "Checking: pdfio-1.6.0-1.fc44.x86_64.rpm\n          pdfio-devel-1.6.0-1.fc44.x86_64.rpm\n          pdfio-1.6.0-1.fc44.src.rpm\n============================ rpmlint session starts ============================\nrpmlint: 2.8.0\nconfiguration:\n    /usr/lib/python3.14/site-packages/rpmlint/configdefaults.toml\n    /etc/xdg/rpmlint/fedora-spdx-licenses.toml\n    /etc/xdg/rpmlint/fedora.toml\n    /etc/xdg/rpmlint/scoring.toml\n    /etc/xdg/rpmlint/users-groups.toml\n    /etc/xdg/rpmlint/warn-on-functions.toml\nrpmlintrc: [PosixPath('/tmp/tmpijdfitvt')]\nchecks: 32, packages: 3\n\npdfio-devel.x86_64: E: incorrect-fsf-address /usr/share/licenses/pdfio-devel/code128-LICENSE.txt\n 3 packages and 0 specfiles checked; 1 errors, 0 warnings, 24 filtered, 1 badness; has taken 0.3 s \n\n\n"
+      "text": "Checking: pdfio-1.6.1-1.fc44.x86_64.rpm\n          pdfio-devel-1.6.1-1.fc44.x86_64.rpm\n          pdfio-examples-1.6.1-1.fc44.noarch.rpm\n          pdfio-1.6.1-1.fc44.src.rpm\n============================ rpmlint session starts ============================\nrpmlint: 2.8.0\nconfiguration:\n    /usr/lib/python3.14/site-packages/rpmlint/configdefaults.toml\n    /etc/xdg/rpmlint/fedora-spdx-licenses.toml\n    /etc/xdg/rpmlint/fedora.toml\n    /etc/xdg/rpmlint/scoring.toml\n    /etc/xdg/rpmlint/users-groups.toml\n    /etc/xdg/rpmlint/warn-on-functions.toml\nrpmlintrc: [PosixPath('/tmp/tmp7bi_zzz_')]\nchecks: 32, packages: 4\n\npdfio-examples.noarch: W: no-documentation\npdfio-examples.noarch: E: incorrect-fsf-address /usr/share/licenses/pdfio-examples/code128-LICENSE.txt\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/code128.c\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/image2pdf.c\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/md2pdf.c\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/mmd.c\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/mmd.h\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/pdf2text.c\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/pdfioinfo.c\npdfio-examples.noarch: E: devel-dependency pdfio-devel\n 4 packages and 0 specfiles checked; 2 errors, 8 warnings, 26 filtered, 2 badness; has taken 0.3 s \n\n\n"
     },
     {
       "header": "Rpmlint (installed packages)",
-      "text": "============================ rpmlint session starts ============================\nrpmlint: 2.8.0\nconfiguration:\n    /usr/lib/python3.14/site-packages/rpmlint/configdefaults.toml\n    /etc/xdg/rpmlint/fedora-spdx-licenses.toml\n    /etc/xdg/rpmlint/fedora.toml\n    /etc/xdg/rpmlint/scoring.toml\n    /etc/xdg/rpmlint/users-groups.toml\n    /etc/xdg/rpmlint/warn-on-functions.toml\nchecks: 32, packages: 3\n\npdfio-devel.x86_64: E: incorrect-fsf-address /usr/share/licenses/pdfio-devel/code128-LICENSE.txt\n 3 packages and 0 specfiles checked; 1 errors, 0 warnings, 25 filtered, 1 badness; has taken 0.2 s \n\n"
+      "text": "============================ rpmlint session starts ============================\nrpmlint: 2.8.0\nconfiguration:\n    /usr/lib/python3.14/site-packages/rpmlint/configdefaults.toml\n    /etc/xdg/rpmlint/fedora-spdx-licenses.toml\n    /etc/xdg/rpmlint/fedora.toml\n    /etc/xdg/rpmlint/scoring.toml\n    /etc/xdg/rpmlint/users-groups.toml\n    /etc/xdg/rpmlint/warn-on-functions.toml\nchecks: 32, packages: 4\n\npdfio-examples.noarch: W: no-documentation\npdfio-examples.noarch: E: incorrect-fsf-address /usr/share/licenses/pdfio-examples/code128-LICENSE.txt\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/code128.c\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/image2pdf.c\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/md2pdf.c\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/mmd.c\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/mmd.h\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/pdf2text.c\npdfio-examples.noarch: W: devel-file-in-non-devel-package /usr/share/pdfio/examples/pdfioinfo.c\npdfio-examples.noarch: E: devel-dependency pdfio-devel\n 4 packages and 0 specfiles checked; 2 errors, 8 warnings, 28 filtered, 2 badness; has taken 0.2 s \n\n"
     },
     {
       "header": "Rpmlint (debuginfo)",
-      "text": "Checking: pdfio-debuginfo-1.6.0-1.fc44.x86_64.rpm\n============================ rpmlint session starts ============================\nrpmlint: 2.8.0\nconfiguration:\n    /usr/lib/python3.14/site-packages/rpmlint/configdefaults.toml\n    /etc/xdg/rpmlint/fedora-spdx-licenses.toml\n    /etc/xdg/rpmlint/fedora.toml\n    /etc/xdg/rpmlint/scoring.toml\n    /etc/xdg/rpmlint/users-groups.toml\n    /etc/xdg/rpmlint/warn-on-functions.toml\nrpmlintrc: [PosixPath('/tmp/tmpai_n86ye')]\nchecks: 32, packages: 1\n\n 1 packages and 0 specfiles checked; 0 errors, 0 warnings, 5 filtered, 0 badness; has taken 0.1 s \n\n\n\n"
+      "text": "Checking: pdfio-debuginfo-1.6.1-1.fc44.x86_64.rpm\n============================ rpmlint session starts ============================\nrpmlint: 2.8.0\nconfiguration:\n    /usr/lib/python3.14/site-packages/rpmlint/configdefaults.toml\n    /etc/xdg/rpmlint/fedora-spdx-licenses.toml\n    /etc/xdg/rpmlint/fedora.toml\n    /etc/xdg/rpmlint/scoring.toml\n    /etc/xdg/rpmlint/users-groups.toml\n    /etc/xdg/rpmlint/warn-on-functions.toml\nrpmlintrc: [PosixPath('/tmp/tmprdihaqox')]\nchecks: 32, packages: 1\n\n 1 packages and 0 specfiles checked; 0 errors, 0 warnings, 5 filtered, 0 badness; has taken 0.1 s \n\n\n\n"
     },
     {
       "header": "",
-      "text": "Generated by fedora-review 0.11.0 (05c5b26) last change: 2025-11-29\nCommand line :/usr/bin/fedora-review -rn pdfio-1.6.0-1.fc44.src.rpm\nBuildroot used: fedora-rawhide-x86_64\nActive plugins: C/C++, Shell-api, Generic\nDisabled plugins: PHP, Perl, Java, Ocaml, fonts, Haskell, Python, SugarActivity, R\nDisabled flags: EXARCH, EPEL6, EPEL7, DISTTAG, BATCH\n"
+      "text": "Generated by fedora-review 0.11.0 (05c5b26) last change: 2025-11-29\nCommand line :/usr/bin/fedora-review -rn pdfio-1.6.1-1.fc44.src.rpm\nBuildroot used: fedora-rawhide-x86_64\nActive plugins: Generic, Shell-api, C/C++\nDisabled plugins: Perl, Ocaml, fonts, R, PHP, Python, SugarActivity, Haskell, Java\nDisabled flags: EXARCH, EPEL6, EPEL7, DISTTAG, BATCH\n"
     },
     {
       "header": "Source checksums",
-      "text": "https://github.com/michaelrsweet/pdfio/releases/download/v1.6.0/pdfio-1.6.0.tar.gz :\n  CHECKSUM(SHA256) this package     : 765b90c8e6668749bdc857abda2c55d0d6c2f9824062982bbe987d78ae9208ec\n  CHECKSUM(SHA256) upstream package : 765b90c8e6668749bdc857abda2c55d0d6c2f9824062982bbe987d78ae9208ec\n"
+      "text": "https://github.com/michaelrsweet/pdfio/releases/download/v1.6.1/pdfio-1.6.1.tar.gz :\n  CHECKSUM(SHA256) this package     : 72c8d01d71e40315e9b8f9dbbe848692354974ad05f337b106cd3797e45b9be4\n  CHECKSUM(SHA256) upstream package : 72c8d01d71e40315e9b8f9dbbe848692354974ad05f337b106cd3797e45b9be4\n"
     },
     {
       "header": "Requires",
-      "text": "pdfio (rpmlib, GLIBC filtered):\n    libc.so.6()(64bit)\n    libm.so.6()(64bit)\n    libpng16.so.16()(64bit)\n    libpng16.so.16(PNG16_0)(64bit)\n    libz.so.1()(64bit)\n    rtld(GNU_HASH)\n\npdfio-devel (rpmlib, GLIBC filtered):\n    /usr/bin/pkg-config\n    libpdfio.so.1()(64bit)\n    pdfio(x86-64)\n    pkgconfig(libpng)\n    pkgconfig(zlib)\n\n"
+      "text": "pdfio (rpmlib, GLIBC filtered):\n    libc.so.6()(64bit)\n    libm.so.6()(64bit)\n    libpng16.so.16()(64bit)\n    libpng16.so.16(PNG16_0)(64bit)\n    libz.so.1()(64bit)\n    rtld(GNU_HASH)\n\npdfio-devel (rpmlib, GLIBC filtered):\n    /usr/bin/pkg-config\n    libpdfio.so.1()(64bit)\n    pdfio(x86-64)\n    pkgconfig(libpng)\n    pkgconfig(zlib)\n\npdfio-examples (rpmlib, GLIBC filtered):\n    pdfio-devel\n\n"
     },
     {
       "header": "Provides",
-      "text": "pdfio:\n    libpdfio.so.1()(64bit)\n    pdfio\n    pdfio(x86-64)\n\npdfio-devel:\n    pdfio-devel\n    pdfio-devel(x86-64)\n    pkgconfig(pdfio)\n\n"
+      "text": "pdfio:\n    libpdfio.so.1()(64bit)\n    pdfio\n    pdfio(x86-64)\n\npdfio-devel:\n    pdfio-devel\n    pdfio-devel(x86-64)\n    pkgconfig(pdfio)\n\npdfio-examples:\n    pdfio-examples\n\n"
     }
   ]
 }

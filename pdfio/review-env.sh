@@ -54,24 +54,24 @@ export HOME=$FR_REVIEWDIR
 cd $HOME
 
 export FR_NAME='pdfio'
-export FR_VERSION='1.6.0'
+export FR_VERSION='1.6.1'
 export FR_RELEASE='1.fc44'
 export FR_GROUP='Unspecified'
-export FR_LICENSE='Apache-2.0 WITH LLVM-exception'
+export FR_LICENSE='Apache-2.0 WITH LLVM-exception AND Zlib AND GPL-2.0-or-later AND OFL-1.1'
 export FR_URL='https://msweet.org/pdfio'
 
-export Source0="https://github.com/michaelrsweet/pdfio/releases/download/v1.6.0/pdfio-1.6.0.tar.gz"
+export Source0="https://github.com/michaelrsweet/pdfio/releases/download/v1.6.1/pdfio-1.6.1.tar.gz"
 
 
 
-export FR_PREP='cd '\''/home/zdohnal/rpmbuild/BUILD/pdfio-1.6.0-build'\''
-rm -rf '\''pdfio-1.6.0'\''
-/usr/lib/rpm/rpmuncompress -x '\''/home/zdohnal/rpmbuild/SOURCES/pdfio-1.6.0.tar.gz'\''
+export FR_PREP='cd '\''/home/zdohnal/rpmbuild/BUILD/pdfio-1.6.1-build'\''
+rm -rf '\''pdfio-1.6.1'\''
+/usr/lib/rpm/rpmuncompress -x '\''/home/zdohnal/rpmbuild/SOURCES/pdfio-1.6.1.tar.gz'\''
 STATUS=$?
 if [ $STATUS -ne 0 ]; then
 exit $STATUS
 fi
-cd '\''pdfio-1.6.0'\''
+cd '\''pdfio-1.6.1'\''
 /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
 /usr/bin/git init -q
 /usr/bin/git config user.name "rpm-build"
@@ -80,7 +80,7 @@ cd '\''pdfio-1.6.0'\''
 /usr/bin/git add --force .
 GIT_COMMITTER_DATE=@${SOURCE_DATE_EPOCH:-${RPM_BUILD_TIME:?}} GIT_AUTHOR_DATE=@${SOURCE_DATE_EPOCH:-${RPM_BUILD_TIME:?}}\
 /usr/bin/git commit -q --no-gpg-sign --allow-empty -a\
---author "rpm-build <rpm-build>" -m "pdfio-1.6.0 base"
+--author "rpm-build <rpm-build>" -m "pdfio-1.6.1 base"
 /usr/bin/git checkout --track -b rpm-build'
 export FR_BUILD='
 CFLAGS="${CFLAGS:--O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-U_FORTIFY_SOURCE,-D_FORTIFY_SOURCE=3 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -mtls-dialect=gnu2 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer  }" ; export CFLAGS ;
@@ -136,24 +136,32 @@ $(grep -q "runstatedir=DIR" ./configure && echo '\''--runstatedir=/run'\'') \
 --enable-libpng
 /usr/bin/make -O -j${RPM_BUILD_NCPUS} V=1 VERBOSE=1'
 export FR_INSTALL='make install
-rm /home/zdohnal/rpmbuild/BUILD/pdfio-1.6.0-build/BUILDROOT//usr/share/doc/pdfio/{LICENSE,NOTICE}
-mv /home/zdohnal/rpmbuild/BUILD/pdfio-1.6.0-build/BUILDROOT/usr/share/doc/pdfio/examples/*LICENSE* .'
+# remove duplicated license
+rm /home/zdohnal/rpmbuild/BUILD/pdfio-1.6.1-build/BUILDROOT//usr/share/doc/pdfio/{LICENSE,NOTICE}
+# copy the font licenses into correct license dir and remove the files
+# in the old location
+cp -p /home/zdohnal/rpmbuild/BUILD/pdfio-1.6.1-build/BUILDROOT/usr/share/doc/pdfio/examples/*LICENSE* .
+rm /home/zdohnal/rpmbuild/BUILD/pdfio-1.6.1-build/BUILDROOT/usr/share/doc/pdfio/examples/*LICENSE*
+# move examples out of documentation
+mkdir /home/zdohnal/rpmbuild/BUILD/pdfio-1.6.1-build/BUILDROOT/usr/share/pdfio
+cp -pr /home/zdohnal/rpmbuild/BUILD/pdfio-1.6.1-build/BUILDROOT/usr/share/doc/pdfio/examples /home/zdohnal/rpmbuild/BUILD/pdfio-1.6.1-build/BUILDROOT/usr/share/pdfio
+rm -rf /home/zdohnal/rpmbuild/BUILD/pdfio-1.6.1-build/BUILDROOT/usr/share/doc/pdfio/examples'
 
 declare -A FR_FILES
 FR_FILES[pdfio]='%license LICENSE NOTICE
 %doc README.md CHANGES.md
 /usr/lib64/libpdfio.so.1'
-FR_FILES[pdfio-devel]='%license code128-LICENSE.txt Roboto-LICENSE.txt
-/usr/include/pdfio.h
+FR_FILES[pdfio-devel]='/usr/include/pdfio.h
 /usr/include/pdfio-content.h
 /usr/lib64/libpdfio.so
 /usr/lib64/pkgconfig/pdfio.pc
 /usr/share/man/man3/pdfio.3.gz
-%dir /usr/share/doc/pdfio
 /usr/share/doc/pdfio/pdfio.html
-/usr/share/doc/pdfio/pdfio-512.png
-%dir /usr/share/doc/pdfio/examples
-/usr/share/doc/pdfio/examples/*'
+/usr/share/doc/pdfio/pdfio-512.png'
+FR_FILES[pdfio-examples]='%license code128-LICENSE.txt Roboto-LICENSE.txt
+%dir /usr/share/pdfio
+%dir /usr/share/pdfio/examples
+/usr/share/pdfio/examples/*'
 
 declare -A FR_DESCRIPTION
 
