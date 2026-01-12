@@ -1,0 +1,15 @@
+Checking: pdfio-debuginfo-1.6.1-1.fc44.x86_64.rpm
+============================ rpmlint session starts ============================
+rpmlint: 2.8.0
+configuration:
+    /usr/lib/python3.14/site-packages/rpmlint/configdefaults.toml
+    /etc/xdg/rpmlint/fedora-spdx-licenses.toml
+    /etc/xdg/rpmlint/fedora.toml
+    /etc/xdg/rpmlint/scoring.toml
+    /etc/xdg/rpmlint/users-groups.toml
+    /etc/xdg/rpmlint/warn-on-functions.toml
+rpmlintrc: [PosixPath('/tmp/tmpv3c88t93')]
+checks: 32, packages: 1
+
+ 1 packages and 0 specfiles checked; 0 errors, 0 warnings, 5 filtered, 0 badness; has taken 0.1 s 
+

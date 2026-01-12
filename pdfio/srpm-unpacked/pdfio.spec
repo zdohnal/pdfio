@@ -113,5 +113,5 @@ make test
 
 
 %changelog
-* Mon Jan 12 2026 Zdenek Dohnal <zdohnal@redhat.com> - 1.6.1-1
+* Tue Jan 06 2026 Zdenek Dohnal <zdohnal@redhat.com> - 1.6.1-1
 - Initial import

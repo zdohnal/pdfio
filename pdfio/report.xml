@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<analysis>
+    <metadata>
+        <generator name="fedora-review" version="0.11.0" build="05c5b26 2025-11-29 22:53:53 +0000"/>
+        <file given-path="pdfio.spec">
+            <hash alg="sha224" hexdigest="459e9cbd038d18caf6d0b157d6c9b8e6f06e6074cf42478f18479f7f"/>
+        </file>
+        <sut>
+            <source-rpm name="pdfio" version="1.6.1" release="1.fc44"/>
+        </sut>
+    </metadata>
+    <results/>
+</analysis>
