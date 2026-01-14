@@ -4,9 +4,15 @@ Release: 1%{?dist}
 Summary: C library for PDF I/O
 # Apache 2.0 with exception - pdfio code
 # GPL-2.0-or-later - code128 font from examples
-License: Apache-2.0 WITH LLVM-exception AND Zlib AND GPL-2.0-or-later
+# Zlib - md5 code
+# MIT-CMU - rc4 code
+# BSD-3-Clause - sha256 code
+License: Apache-2.0 WITH LLVM-exception AND Zlib AND GPL-2.0-or-later AND MIT-CMU AND BSD-3-Clause
 URL: https://msweet.org/pdfio
 Source0: https://github.com/michaelrsweet/pdfio/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1: https://github.com/michaelrsweet/pdfio/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
+# Mike's public key from here https://www.msweet.org/pgp.html
+Source2: msweet-pub.gpg
 
 
 # Patches
@@ -16,6 +22,8 @@ Source0: https://github.com/michaelrsweet/pdfio/releases/download/v%{version}/%{
 BuildRequires: git-core
 # builds with gcc
 BuildRequires: gcc
+# for verifying the tarball signature
+BuildRequires: gpgverify
 # use make for Makefile
 BuildRequires: make
 # uses pkg-config in SPEC and in configure
@@ -50,6 +58,7 @@ The package contains HTML documentation and man page for PDFIO library.
 
 
 %prep
+%{gpgverify} --keyring='%{SOURCE2}' --signature='%{SOURCE1}' --data='%{SOURCE0}'
 %autosetup -S git
 
 
@@ -113,5 +122,5 @@ make test
 
 
 %changelog
-* Mon Jan 12 2026 Zdenek Dohnal <zdohnal@redhat.com> - 1.6.1-1
+* Wed Jan 14 2026 Zdenek Dohnal <zdohnal@redhat.com> - 1.6.1-1
 - Initial import
