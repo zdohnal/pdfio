@@ -57,14 +57,17 @@ export FR_NAME='pdfio'
 export FR_VERSION='1.6.1'
 export FR_RELEASE='1.fc44'
 export FR_GROUP='Unspecified'
-export FR_LICENSE='Apache-2.0 WITH LLVM-exception AND Zlib AND GPL-2.0-or-later'
+export FR_LICENSE='Apache-2.0 WITH LLVM-exception AND Zlib AND GPL-2.0-or-later AND MIT-CMU AND BSD-3-Clause'
 export FR_URL='https://msweet.org/pdfio'
 
 export Source0="https://github.com/michaelrsweet/pdfio/releases/download/v1.6.1/pdfio-1.6.1.tar.gz"
+export Source1="https://github.com/michaelrsweet/pdfio/releases/download/v1.6.1/pdfio-1.6.1.tar.gz.sig"
+export Source2="msweet-pub.gpg"
 
 
 
-export FR_PREP='cd '\''/home/zdohnal/rpmbuild/BUILD/pdfio-1.6.1-build'\''
+export FR_PREP='/usr/libexec/gpgverify  --keyring='\''/home/zdohnal/rpmbuild/SOURCES/msweet-pub.gpg'\'' --signature='\''/home/zdohnal/rpmbuild/SOURCES/pdfio-1.6.1.tar.gz.sig'\'' --data='\''/home/zdohnal/rpmbuild/SOURCES/pdfio-1.6.1.tar.gz'\''
+cd '\''/home/zdohnal/rpmbuild/BUILD/pdfio-1.6.1-build'\''
 rm -rf '\''pdfio-1.6.1'\''
 /usr/lib/rpm/rpmuncompress -x '\''/home/zdohnal/rpmbuild/SOURCES/pdfio-1.6.1.tar.gz'\''
 STATUS=$?

@@ -28,7 +28,7 @@ Legend:
 ===== MUST items =====
 
 C/C++:
-[x]: Package does not contain kernel modules.
+[ ]: Package does not contain kernel modules.
 [x]: If your application is a C or C++ application you must list a
      BuildRequires against gcc, gcc-c++ or clang.
 [x]: Header files in -devel subpackage, if present.
@@ -39,10 +39,10 @@ C/C++:
 [x]: Development (unversioned) .so files in -devel subpackage, if present.
 
 Generic:
-[x]: Package is licensed with an open-source compatible license and meets
+[ ]: Package is licensed with an open-source compatible license and meets
      other legal requirements as defined in the legal section of Packaging
      Guidelines.
-[x]: License field in the package spec file matches the actual license.
+[ ]: License field in the package spec file matches the actual license.
      Note: Checking patched sources after %prep for licenses. Licenses
      found: "Unknown or generated", "*No copyright* Apache License 2.0",
      "Apache License 2.0", "GNU General Public License, Version 2", "GNU
@@ -53,33 +53,33 @@ Generic:
      copyright* SIL Open Font License 1.1". 128 files have unknown license.
      Detailed output of licensecheck in
      /home/zdohnal/repo_upstream/pdfio/pdfio/licensecheck.txt
-[x]: License file installed when any subpackage combination is installed.
-[x]: If the package is under multiple licenses, the licensing breakdown
+[ ]: License file installed when any subpackage combination is installed.
+[ ]: If the package is under multiple licenses, the licensing breakdown
      must be documented in the spec.
-[x]: %build honors applicable compiler flags or justifies otherwise.
-[x]: Package contains no bundled libraries or specifies bundled libraries
+[ ]: %build honors applicable compiler flags or justifies otherwise.
+[ ]: Package contains no bundled libraries or specifies bundled libraries
      with Provides: bundled(<libname>) if unbundling is not possible.
-[x]: Changelog in prescribed format.
-[x]: Sources contain only permissible code or content.
-[x]: Package contains desktop file if it is a GUI application.
-[x]: Development files must be in a -devel package
-[x]: Package uses nothing in %doc for runtime.
-[x]: Package consistently uses macros (instead of hard-coded directory
+[ ]: Changelog in prescribed format.
+[ ]: Sources contain only permissible code or content.
+[ ]: Package contains desktop file if it is a GUI application.
+[ ]: Development files must be in a -devel package
+[ ]: Package uses nothing in %doc for runtime.
+[ ]: Package consistently uses macros (instead of hard-coded directory
      names).
-[x]: Package is named according to the Package Naming Guidelines.
-[x]: Package does not generate any conflict.
-[x]: Package obeys FHS, except libexecdir and /usr/target.
-[x]: If the package is a rename of another package, proper Obsoletes and
+[ ]: Package is named according to the Package Naming Guidelines.
+[ ]: Package does not generate any conflict.
+[ ]: Package obeys FHS, except libexecdir and /usr/target.
+[ ]: If the package is a rename of another package, proper Obsoletes and
      Provides are present.
-[x]: Requires correct, justified where necessary.
-[x]: Spec file is legible and written in American English.
-[x]: Package contains systemd file(s) if in need.
-[x]: Useful -debuginfo package or justification otherwise.
-[x]: Package is not known to require an ExcludeArch tag.
-[x]: Large documentation must go in a -doc subpackage. Large could be size
+[ ]: Requires correct, justified where necessary.
+[ ]: Spec file is legible and written in American English.
+[ ]: Package contains systemd file(s) if in need.
+[ ]: Useful -debuginfo package or justification otherwise.
+[ ]: Package is not known to require an ExcludeArch tag.
+[ ]: Large documentation must go in a -doc subpackage. Large could be size
      (~1MB) or number of files.
      Note: Documentation size is 178911 bytes in 10 files.
-[x]: Package complies to the Packaging Guidelines
+[ ]: Package complies to the Packaging Guidelines
 [x]: Package successfully compiles and builds into binary rpms on at least
      one supported primary architecture.
 [x]: Package installs properly.
@@ -115,21 +115,18 @@ Generic:
 ===== SHOULD items =====
 
 Generic:
-[!]: Avoid bundling fonts in non-fonts packages.
+[ ]: Avoid bundling fonts in non-fonts packages.
      Note: Package contains font files
-[-]: If the source package does not include license text(s) as a separate
+[ ]: If the source package does not include license text(s) as a separate
      file from upstream, the packager SHOULD query upstream to include it.
-[x]: Final provides and requires are sane (see attachments).
-[x]: Package functions as described.
-[x]: Latest version is packaged.
-[x]: Package does not include license text files separate from upstream.
-[-]: Sources are verified with gpgverify first in %prep if upstream
-     publishes signatures.
-     Note: gpgverify is not used.
-[x]: Package should compile and build into binary rpms on all supported
+[ ]: Final provides and requires are sane (see attachments).
+[ ]: Package functions as described.
+[ ]: Latest version is packaged.
+[ ]: Package does not include license text files separate from upstream.
+[ ]: Package should compile and build into binary rpms on all supported
      architectures.
-[x]: %check is present and all tests pass.
-[x]: Packages should try to preserve timestamps of original installed
+[ ]: %check is present and all tests pass.
+[ ]: Packages should try to preserve timestamps of original installed
      files.
 [x]: Reviewer should test that the package builds in mock.
 [x]: Buildroot is not present
@@ -141,6 +138,8 @@ Generic:
 [x]: The placement of pkgconfig(.pc) files are correct.
 [x]: Sources can be downloaded from URI in Source: tag
 [x]: SourceX is a working URL.
+[x]: Sources are verified with gpgverify first in %prep if upstream
+     publishes signatures.
 [x]: Spec use %global instead of %define unless justified.
 
 ===== EXTRA items =====
@@ -169,7 +168,7 @@ configuration:
     /etc/xdg/rpmlint/scoring.toml
     /etc/xdg/rpmlint/users-groups.toml
     /etc/xdg/rpmlint/warn-on-functions.toml
-rpmlintrc: [PosixPath('/tmp/tmpya57iom8')]
+rpmlintrc: [PosixPath('/tmp/tmpxjt9e65j')]
 checks: 32, packages: 4
 
 pdfio.x86_64: W: no-documentation
@@ -195,7 +194,7 @@ configuration:
     /etc/xdg/rpmlint/scoring.toml
     /etc/xdg/rpmlint/users-groups.toml
     /etc/xdg/rpmlint/warn-on-functions.toml
-rpmlintrc: [PosixPath('/tmp/tmpv3c88t93')]
+rpmlintrc: [PosixPath('/tmp/tmpiepwu0h2')]
 checks: 32, packages: 1
 
  1 packages and 0 specfiles checked; 0 errors, 0 warnings, 5 filtered, 0 badness; has taken 0.1 s 
@@ -223,7 +222,7 @@ pdfio-devel.x86_64: W: dangling-relative-symlink /usr/share/doc/pdfio-devel/exam
 pdfio-devel.x86_64: W: dangling-relative-symlink /usr/share/doc/pdfio-devel/examples/Roboto-Italic.ttf ../../../fonts/google-roboto/Roboto-Italic.ttf
 pdfio-devel.x86_64: W: dangling-relative-symlink /usr/share/doc/pdfio-devel/examples/Roboto-Regular.ttf ../../../fonts/google-roboto/Roboto-Regular.ttf
 pdfio-devel.x86_64: W: dangling-relative-symlink /usr/share/doc/pdfio-devel/examples/RobotoMono-Regular.ttf ../../../fonts/google-roboto-mono-fonts/RobotoMono-Regular.ttf
- 4 packages and 0 specfiles checked; 1 errors, 5 warnings, 26 filtered, 1 badness; has taken 0.2 s 
+ 4 packages and 0 specfiles checked; 1 errors, 5 warnings, 27 filtered, 1 badness; has taken 0.2 s 
 
 
 
@@ -232,6 +231,13 @@ Source checksums
 https://github.com/michaelrsweet/pdfio/releases/download/v1.6.1/pdfio-1.6.1.tar.gz :
   CHECKSUM(SHA256) this package     : 72c8d01d71e40315e9b8f9dbbe848692354974ad05f337b106cd3797e45b9be4
   CHECKSUM(SHA256) upstream package : 72c8d01d71e40315e9b8f9dbbe848692354974ad05f337b106cd3797e45b9be4
+https://github.com/michaelrsweet/pdfio/releases/download/v1.6.1/pdfio-1.6.1.tar.gz.sig :
+  CHECKSUM(SHA256) this package     : e042a9ebe10292fb6eed86eceeece451a15fa26d401f7ba78f8b08f263e7fff0
+  CHECKSUM(SHA256) upstream package : e042a9ebe10292fb6eed86eceeece451a15fa26d401f7ba78f8b08f263e7fff0
+Using local file /home/zdohnal/repo_upstream/pdfio/msweet-pub.gpg as upstream
+file:///home/zdohnal/repo_upstream/pdfio/msweet-pub.gpg :
+  CHECKSUM(SHA256) this package     : af8a637c90d2aa1e34475f98dfaff9eff12f4f382f0095df264b5e56879f4d14
+  CHECKSUM(SHA256) upstream package : af8a637c90d2aa1e34475f98dfaff9eff12f4f382f0095df264b5e56879f4d14
 
 
 Requires
@@ -278,6 +284,6 @@ pdfio-doc:
 Generated by fedora-review 0.11.0 (05c5b26) last change: 2025-11-29
 Command line :/usr/bin/fedora-review -rn pdfio-1.6.1-1.fc44.src.rpm
 Buildroot used: fedora-rawhide-x86_64
-Active plugins: Generic, Shell-api, C/C++
-Disabled plugins: SugarActivity, Ocaml, Java, fonts, PHP, Perl, Python, Haskell, R
+Active plugins: Shell-api, C/C++, Generic
+Disabled plugins: R, Haskell, PHP, Java, Perl, Python, Ocaml, fonts, SugarActivity
 Disabled flags: EXARCH, EPEL6, EPEL7, DISTTAG, BATCH
